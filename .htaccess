@@ -1,0 +1,10 @@
+RewriteEngine on
+DirectoryIndex index.html index.php
+
+RewriteCond %{HTTP_HOST} !^$
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteCond %{HTTPS}s ^on(s)|
+RewriteRule ^ http%1://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+RewriteCond %{HTTP_HOST} ^scotthummel.net [NC,OR]
+RewriteCond %{REQUEST_URI} !public/
+RewriteRule (.*) /public/$1 [L]
