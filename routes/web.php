@@ -14,3 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['prefix' => 'admin'], function() {
+   Route::resource('exercises', 'Admin\ExerciseController');
+   Route::resource('body-parts', 'Admin\BodyPartController');
+   Route::resource('muscles', 'Admin\MuscleController');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

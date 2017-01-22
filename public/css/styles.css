@@ -1,0 +1,69 @@
+/* Delete form */
+form.delete,
+form.logout {
+    display: inline;
+}
+
+form.logout button[type="submit"] {
+    background: none;
+    border: none;
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: normal;
+    line-height: 1.42857143;
+    color: #333;
+    white-space: nowrap;
+}
+
+form.delete button[type="submit"] {
+    background: none;
+    border: none;
+    padding: 0;
+    color: #337AB7;
+}
+
+form.delete button[type="submit"]:hover {
+    text-decoration: underline;
+}
+
+/**
+ * Buttons
+ */
+
+.btn-primary,
+.btn-primary:active,
+.btn-primary:focus {
+    background-color: #BE2034;
+    border-color: #000;
+}
+
+.btn-primary:hover, .btn-primary.active.focus, .btn-primary.active:focus, .btn-primary.active:hover, .btn-primary.focus:active, .btn-primary:active:focus, .btn-primary:active:hover, .open > .dropdown-toggle.btn-primary.focus, .open > .dropdown-toggle.btn-primary:focus, .open > .dropdown-toggle.btn-primary:hover {
+    background-color: #BE2034;
+    border-color: #000;
+}
+
+
+.btn-default {
+    background-color: #c3bcc2;
+    border-color: #747474;
+    color: #FFF;
+}
+
+.btn-default:hover {
+    border-color: #747474;
+    color: #FFF;
+}
+
+.panel-primary {
+    border-color: #000;
+}
+
+.panel-primary > .panel-heading {
+    background-color: #BE2034;
+    border-color: #000;
+}
+
+body {
+    background-color: #000;
+}
