@@ -1,24 +1,28 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Api;
 
-use App\Fitpro\Notifications\Flash;
-use App\Models\Permission;
+use App\FitPro\Transformers\ExerciseTransformer;
+use App\Http\Controllers\ApiController;
+use App\Models\Exercise;
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class PermissionController extends Controller
+class ExerciseController extends ApiController
 {
     /**
      * Display a listing of the resource.
      *
+     * @param ExerciseTransformer $transformer
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(ExerciseTransformer $transformer)
     {
-        //
+        $exercises = Exercise::where('active', 1)->orderBy('exercise_name')->get();
+
+        return $this->respond([
+            'data' => $transformer->transformCollection($exercises->toArray())
+        ]);
     }
 
     /**
@@ -39,13 +43,7 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
-        $permission = Permission::create([
-            'permission_name' => $request->get('permission_name'),
-            'permission_slug' => $request->get('permission_slug')
-        ]);
-
-        Flash::success('The role "' . $permission->permission_name . '" was successfully created.');
-        return back();
+        //
     }
 
     /**

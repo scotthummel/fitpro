@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section('title', 'Admin | Roles')
 
@@ -140,7 +140,7 @@
                                             <input type="text" name="user" id="user" class="form-control" placeholder="Start typing to select a user by name or email"/>
                                             <div id="user-id"></div>
                                         @else
-                                            No roles were found.
+                                            No users were found.
                                         @endif
                                     </div>
 

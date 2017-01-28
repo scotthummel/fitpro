@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Fitpro\Notifications\Flash;
-use App\Models\Permission;
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class PermissionController extends Controller
+class AssignExercisesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +14,7 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.assign-exercises.index');
     }
 
     /**
@@ -28,7 +24,7 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.assign-exercises.create');
     }
 
     /**
@@ -39,13 +35,7 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
-        $permission = Permission::create([
-            'permission_name' => $request->get('permission_name'),
-            'permission_slug' => $request->get('permission_slug')
-        ]);
-
-        Flash::success('The role "' . $permission->permission_name . '" was successfully created.');
-        return back();
+        //
     }
 
     /**

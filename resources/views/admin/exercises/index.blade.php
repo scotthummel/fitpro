@@ -41,6 +41,8 @@
                         @endforeach
 
                     </table>
+
+                    {!! $exercises->render() !!}
                 </div>
 
             @else

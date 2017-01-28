@@ -1,24 +1,27 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Api;
 
-use App\Fitpro\Notifications\Flash;
-use App\Models\Permission;
+use App\FitPro\Transformers\BodyPartTransformer;
+use App\Http\Controllers\ApiController;
+use App\Models\BodyPart;
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
-class PermissionController extends Controller
+class BodyPartController extends ApiController
 {
     /**
      * Display a listing of the resource.
      *
+     * @param BodyPartTransformer $transformer
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(BodyPartTransformer $transformer)
     {
-        //
+        $bodyParts = BodyPart::where('active', 1)->orderBy('body_part')->get();
+
+        return $this->respond([
+            'data' => $transformer->transformCollection($bodyParts->toArray())
+        ]);
     }
 
     /**
@@ -39,13 +42,7 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
-        $permission = Permission::create([
-            'permission_name' => $request->get('permission_name'),
-            'permission_slug' => $request->get('permission_slug')
-        ]);
-
-        Flash::success('The role "' . $permission->permission_name . '" was successfully created.');
-        return back();
+        //
     }
 
     /**

@@ -20,6 +20,9 @@
     <link href="/css/app.css" rel="stylesheet">
     <link href="/css/styles.css" rel="stylesheet">
 
+    @yield('head')
+    @yield('css')
+
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([

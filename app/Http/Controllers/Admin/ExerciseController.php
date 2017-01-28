@@ -17,7 +17,7 @@ class ExerciseController extends Controller
      */
     public function index()
     {
-        $exercises = Exercise::with('partOfBody')->orderBy('exercise_name')->get();
+        $exercises = Exercise::with('partOfBody')->orderBy('exercise_name')->paginate(20);
 
         return view('admin.exercises.index', [
             'exercises' => $exercises

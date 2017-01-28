@@ -1,6 +1,10 @@
 <body>
 <div id="app">
-    <nav class="navbar navbar-default navbar-static-top">
+    @include('partials.flash_message')
+
+    @include('partials.admin-nav')
+
+    <nav class="navbar navbar-primary">
         <div class="container">
             <div class="navbar-header">
 

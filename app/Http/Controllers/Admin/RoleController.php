@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\ASCCEvents\Notifications\Flash;
+use App\Fitpro\Notifications\Flash;
 use App\Models\Permission;
 use App\Models\Role;
 use App\Models\User;
