@@ -15,8 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'admin'], function() {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function() {
    Route::resource('exercises', 'Admin\ExerciseController');
+   Route::resource('exercise-categories', 'Admin\ExerciseCategoryController');
    Route::resource('body-parts', 'Admin\BodyPartController');
    Route::resource('muscles', 'Admin\MuscleController');
 });

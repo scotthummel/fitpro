@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\BodyPart;
 use App\Models\Exercise;
+use App\Models\ExerciseCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -16,7 +17,7 @@ class ExerciseController extends Controller
      */
     public function index()
     {
-        $exercises = Exercise::with('partOfBody')->get();
+        $exercises = Exercise::with('partOfBody')->orderBy('exercise_name')->get();
 
         return view('admin.exercises.index', [
             'exercises' => $exercises
@@ -32,8 +33,11 @@ class ExerciseController extends Controller
     {
         $bodyParts = BodyPart::where('active', 1)->orderBy('body_part')->get();
 
+        $categories = ExerciseCategory::orderBy('category_name')->get();
+
         return view('admin.exercises.create', [
-            'bodyParts' => $bodyParts
+            'bodyParts' => $bodyParts,
+            'categories' => $categories
         ]);
     }
 
@@ -47,11 +51,13 @@ class ExerciseController extends Controller
     {
         $this->validate($request, [
             'body_part_id' => 'required',
+            'category_id' => 'required',
             'exercise_name' => 'required'
         ]);
 
         Exercise::create([
             'body_part_id' => $request->body_part_id,
+            'category_id' => $request->category_id,
             'exercise_name' => $request->exercise_name
         ]);
 
@@ -81,9 +87,12 @@ class ExerciseController extends Controller
 
         $bodyParts = BodyPart::where('active', 1)->orderBy('body_part')->get();
 
+        $categories = ExerciseCategory::orderBy('category_name')->get();
+
         return view('admin.exercises.edit', [
             'exercise' => $exercise,
-            'bodyParts' => $bodyParts
+            'bodyParts' => $bodyParts,
+            'categories' => $categories
         ]);
     }
 

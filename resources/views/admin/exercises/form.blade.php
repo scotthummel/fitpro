@@ -21,6 +21,22 @@
         @endif
     </div>
 
+    <div class="form-group{{ $errors->has('category_id') ? ' has-error' : '' }}">
+        <label for="category_id">Exercise Category</label>
+        <select name="category_id" class="form-control" id="category_id">
+            <option value="">Select One...</option>
+            @foreach($categories as $category)
+                <option value="{{ $category->id }}" {{ (!empty($exercise) && $exercise->category_id == $category->id) ? 'selected="SELECTED"' : '' }}>{{ $category->category_name }}</option>
+            @endforeach
+        </select>
+
+        @if ($errors->has('category_id'))
+            <span class="help-block error">
+                <strong>{{ $errors->first('category_id') }}</strong>
+            </span>
+        @endif
+    </div>
+
     <div class="form-group{{ $errors->has('exercise_name') ? ' has-error' : '' }}">
         <label for="muscle_name">Exercise Name</label>
         <input type="text" class="form-control" name="exercise_name" id="exercise_name" value="{{ old('exercise_name', (!empty($exercise)) ? $exercise->exercise_name : '') }}" />
