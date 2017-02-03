@@ -33,7 +33,7 @@
                                         <button type="submit">Del</button>
                                     </form>
                                 </td>
-                                <td>{{ $muscle->partOfBody->body_part }}</td>
+                                <td>{{ (!empty( $muscle->partOfBody)) ? $muscle->partOfBody->body_part : 'No body part' }}</td>
                                 <td>{{ $muscle->muscle_name }}</td>
                                 <td>{{ (!empty($muscle->active)) ? 'Active' : 'Inactive' }}</td>
                             </tr>
