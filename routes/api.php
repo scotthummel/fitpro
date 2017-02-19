@@ -21,4 +21,5 @@ Route::group(['prefix' => 'v1'], function() {
     Route::resource('exercises', 'Api\ExerciseController');
     Route::resource('body-parts', 'Api\BodyPartController');
     Route::resource('exercise-categories', 'Api\ExerciseCategoryController');
+    Route::resource('users', 'Api\UserController');
 });
