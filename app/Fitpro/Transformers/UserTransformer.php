@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Lambda\Transformers;
+namespace App\Fitpro\Transformers;
 
 class UserTransformer extends Transformer {
 
     public function transform($item)
     {
         return [
-            'headline'   => $item['title'],
-            'story'      => $item['story'],
-            'flyer'      => $item['flyer'],
-            'screenshot' => $item['screenshot']
+            'id'         => $item['id'],
+            'first_name' => $item['first_name'],
+            'last_name'  => $item['last_name'],
+            'email'      => $item['email']
         ];
     }
 }

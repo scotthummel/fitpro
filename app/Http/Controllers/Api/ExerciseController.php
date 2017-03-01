@@ -13,12 +13,22 @@ class ExerciseController extends ApiController
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @param ExerciseTransformer $transformer
      * @return \Illuminate\Http\Response
      */
-    public function index(ExerciseTransformer $transformer)
+    public function index(Request $request, ExerciseTransformer $transformer)
     {
-        $exercises = Exercise::where('active', 1)->orderBy('exercise_name')->get();
+        if (!empty($request->query('part_id'))) {
+            $exercises = Exercise::where('active', 1)
+                ->where('body_part_id', $request->query('part_id'))
+                ->orderBy('exercise_name')
+                ->get();
+        } else {
+            $exercises = Exercise::where('active', 1)
+                ->orderBy('exercise_name')
+                ->get();
+        }
 
         return $this->respond([
             'data' => $transformer->transformCollection($exercises->toArray())

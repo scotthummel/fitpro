@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\FitPro\Transformers\BodyPartTransformer;
 use App\Http\Controllers\ApiController;
-use App\Lambda\Transformers\UserTransformer;
-use App\Models\BodyPart;
+use App\Fitpro\Transformers\UserTransformer;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -14,12 +12,22 @@ class UserController extends ApiController
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @param UserTransformer $transformer
      * @return \Illuminate\Http\Response
      */
-    public function index(UserTransformer $transformer)
+    public function index(Request $request, UserTransformer $transformer)
     {
-        $bodyParts = User::where('active', 1)->orderBy('last_name')->get();
+        if (!empty($request->query('search'))) {
+            $bodyParts = User::where('active', 1)
+                ->where('first_name', 'LIKE', '%' . $request->search, '%')
+                ->orWhere('last_name', 'LIKE', '%' . $request->search, '%')
+                ->orWhere('email', 'LIKE', '%' . $request->search, '%')
+                ->orderBy('last_name')
+                ->get();
+        } else {
+            $bodyParts = User::where('active', 1)->orderBy('last_name')->get();
+        }
 
         return $this->respond([
             'data' => $transformer->transformCollection($bodyParts->toArray())
