@@ -180,6 +180,8 @@ return [
 
         App\Providers\FlashServiceProvider::class,
 
+        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class
+
     ],
 
     /*
@@ -228,7 +230,10 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
-        'Flash' => App\Fitpro\Notifications\Flash::class
+        'Flash' => App\Fitpro\Notifications\Flash::class,
+
+        'JWTAuth'   => Tymon\JWTAuth\Facades\JWTAuth::class,
+        'JWTFactory'=> Tymon\JWTAuth\Facades\JWTFactory::class
 
     ],
 
