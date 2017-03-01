@@ -41,7 +41,7 @@ class ApiController extends Controller
 
     public function respond($data, $headers = [])
     {
-        header("Access-Control-Allow-Origin: *");
+        // header("Access-Control-Allow-Origin: *");
 
         return response()->json($data, $this->getStatusCode(), $this->getHeaders());
     }
