@@ -24,5 +24,5 @@ Route::group(['prefix' => 'v1', 'middleware' => ['api']], function() {
     Route::resource('users', 'Api\UserController');
 });
 
-Route::group(['prefix' => 'api/v1', 'middleware' => ['api', 'cors', 'jwt.auth']], function() {
+Route::group(['prefix' => 'api/v1', 'middleware' => ['api', 'cors']], function() {
 });
