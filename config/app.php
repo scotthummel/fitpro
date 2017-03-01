@@ -180,7 +180,8 @@ return [
 
         App\Providers\FlashServiceProvider::class,
 
-        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class
+        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
+        Barryvdh\Cors\ServiceProvider::class,
 
     ],
 
