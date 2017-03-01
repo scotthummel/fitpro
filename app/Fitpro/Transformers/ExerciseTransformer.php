@@ -1,6 +1,6 @@
 <?php
 
-namespace App\FitPro\Transformers;
+namespace App\Fitpro\Transformers;
 
 class ExerciseTransformer extends Transformer {
 
