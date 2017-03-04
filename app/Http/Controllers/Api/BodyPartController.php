@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\FitPro\Transformers\BodyPartTransformer;
+use App\Fitpro\Transformers\BodyPartTransformer;
 use App\Http\Controllers\ApiController;
 use App\Models\BodyPart;
 use Illuminate\Http\Request;

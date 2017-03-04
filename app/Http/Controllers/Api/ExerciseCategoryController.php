@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\FitPro\Transformers\ExerciseCategoryTransformer;
+use App\Fitpro\Transformers\ExerciseCategoryTransformer;
 use App\Http\Controllers\ApiController;
 use App\Models\ExerciseCategory;
 use Illuminate\Http\Request;
