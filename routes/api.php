@@ -22,6 +22,7 @@ Route::group(['prefix' => 'v1', 'middleware' => ['api', 'cors']], function() {
     Route::resource('body-parts', 'Api\BodyPartController');
     Route::resource('exercise-categories', 'Api\ExerciseCategoryController');
     Route::resource('users', 'Api\UserController');
+    Route::resource('workouts', 'Api\WorkoutController');
 });
 
 Route::group(['prefix' => 'api/v1', 'middleware' => ['api', 'cors']], function() {
