@@ -23,9 +23,9 @@ Route::group(['prefix' => 'v1', 'middleware' => ['api', 'cors', 'jwt.auth']], fu
     Route::resource('exercise-categories', 'Api\ExerciseCategoryController');
     Route::resource('users', 'Api\UserController');
     Route::resource('workouts', 'Api\WorkoutController');
-    Route::get('user', 'Api\AuthController@getAuthenticatedUser');
 });
 
 Route::group(['prefix' => 'v1', 'middleware' => ['api']], function () {
     Route::post('authenticate', 'Api\AuthController@authenticate');
+    Route::get('user', 'Api\AuthController@getAuthenticatedUser');
 });
