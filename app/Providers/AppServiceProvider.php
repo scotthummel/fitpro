@@ -23,6 +23,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        require_once(app_path('app/Fitpro/functions.php'));
+        require_once(app_path('Fitpro/functions.php'));
     }
 }
