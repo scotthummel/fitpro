@@ -13,9 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:api');
+//Route::get('/user', function (Request $request) {
+//    return $request->user();
+//})->middleware('auth:api');
 
 Route::group(['prefix' => 'v1', 'middleware' => ['api', 'cors', 'jwt.auth']], function() {
     Route::resource('exercises', 'Api\ExerciseController');
@@ -23,8 +23,9 @@ Route::group(['prefix' => 'v1', 'middleware' => ['api', 'cors', 'jwt.auth']], fu
     Route::resource('exercise-categories', 'Api\ExerciseCategoryController');
     Route::resource('users', 'Api\UserController');
     Route::resource('workouts', 'Api\WorkoutController');
+    Route::get('user', 'Api\AuthController@getAuthenticatedUser');
 });
 
 Route::group(['prefix' => 'v1', 'middleware' => ['api']], function () {
-    Route::post('/authenticate', 'Api\AuthController@authenticate');
+    Route::post('authenticate', 'Api\AuthController@authenticate');
 });

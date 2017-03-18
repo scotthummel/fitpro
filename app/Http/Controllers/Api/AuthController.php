@@ -51,7 +51,7 @@ class AuthController extends Controller
 
         } catch (\Tymon\JWTAuth\Exceptions\JWTException $e) {
 
-            return response()->json(['Token abset'], $e->getStatusCode());
+            return response()->json(['Token absent'], $e->getStatusCode());
 
         }
 
